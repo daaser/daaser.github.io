@@ -50,16 +50,19 @@ function draw() {
 // Start it up
 function mousePressed() {
   next = 0;
-  painting = true;
+  if (painting) painting = false;
+  else painting = true;
   previous.x = mouseX;
   previous.y = mouseY;
   paths.push(new Path());
 }
 
 // Stop
+/*
 function mouseReleased() {
   painting = false;
 }
+*/
 
 // A Path is a list of particles
 function Path() {
