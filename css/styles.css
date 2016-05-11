@@ -9,6 +9,11 @@
   -webkit-touch-callout: none; /* iOS Safari */
 }
 
+canvas {
+  position: fixed;
+  z-index: -1;
+}
+
 body {
   padding:10px 50px 0 0;
   font-family: 'Open Sans', sans-serif;
@@ -182,6 +187,7 @@ td {
 
 /* Wrapper */
 .wrapper {
+  position: absolute;
   width:960px;
 }
 
