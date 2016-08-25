@@ -25,10 +25,15 @@ function setup() {
   // colorC = color(52, 152, 219);
   // colorD = color(155, 89, 182);
 
-  colorA = color('#C30000');
-  colorB = color('46, 204, 113');
-  colorC = color('#112B3A');
-  colorD = color('#10754B');
+  // colorA = color('#C30000');
+  // colorB = color('46, 204, 113');
+  // colorC = color('#112B3A');
+  // colorD = color('#10754B');
+
+  colorA = color('#408080');
+  colorB = color('#408080');
+  colorC = color('#408080');
+  colorD = color('#408080');
 
   mouseX = mouseX || width/2;
   mouseY = mouseY || 152.4;

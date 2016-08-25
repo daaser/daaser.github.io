@@ -313,6 +313,10 @@ footer {
 }
 
 @media print, screen and (max-width: 720px) {
+  canvas {
+    display: none;
+  }
+
   body {
     word-wrap:break-word;
   }
@@ -337,6 +341,9 @@ footer {
 }
 
 @media print, screen and (max-width: 480px) {
+  canvas {
+    display: none;
+  }
 
   header ul li.download {
     display:none;
@@ -353,6 +360,10 @@ footer {
 }
 
 @media print {
+  canvas {
+    display: none;
+  }
+  
   body {
     padding:0.4in;
     font-size:12pt;
