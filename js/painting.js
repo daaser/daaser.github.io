@@ -8,14 +8,17 @@ let next = 0;
 let current;
 let previous;
 
-let bg = '#FBFAF7'
+const dark = '#1C1C1E';
+const light = '#FBFAF7';
+
+let bg = light
 let fill_color = 0
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    bg = '#0D1117'
+    bg = dark
     fill_color = 255
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-    bg = event.matches ? '#0D1117' : '#FBFAF7';
+    bg = event.matches ? light : dark;
     fill_color = event.matches ? 255 : 0;
 });
 
