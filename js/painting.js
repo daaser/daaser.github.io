@@ -1,21 +1,32 @@
 // All the paths
-var paths = [];
+let paths = [];
 // Are we painting?
-var painting = false;
+let painting = false;
 // How long until the next circle
-var next = 0;
+let next = 0;
 // Where are we now and where were we?
-var current;
-var previous;
+let current;
+let previous;
+
+let bg = '#FBFAF7'
+let fill_color = 0
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    bg = '#0D1117'
+    fill_color = 255
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    bg = event.matches ? '#0D1117' : '#FBFAF7';
+    fill_color = event.matches ? 255 : 0;
+});
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     current = createVector(0, 0);
     previous = createVector(0, 0);
-};
+}
 
 function draw() {
-    background('#FBFAF7');
+    background(bg);
 
     // If it's time for a new point
     if (millis() > next && painting) {
@@ -25,7 +36,7 @@ function draw() {
         current.y = mouseY;
 
         // New particle's force is based on mouse movement
-        var force = p5.Vector.sub(current, previous);
+        let force = p5.Vector.sub(current, previous);
         force.mult(0.05);
 
         // Add new particle
@@ -40,7 +51,7 @@ function draw() {
     }
 
     // Draw all paths
-    for (var i = 0; i < paths.length; i++) {
+    for (let i = 0; i < paths.length; i++) {
         paths[i].update();
         paths[i].display();
     }
@@ -73,16 +84,15 @@ Path.prototype.add = function (position, force) {
 
 // Display plath
 Path.prototype.update = function () {
-    for (var i = 0; i < this.particles.length; i++) {
+    for (let i = 0; i < this.particles.length; i++) {
         this.particles[i].update();
     }
 }
 
 // Display plath
 Path.prototype.display = function () {
-
     // Loop through backwards
-    for (var i = this.particles.length - 1; i >= 0; i--) {
+    for (let i = this.particles.length - 1; i >= 0; i--) {
         // If we shold remove it
         if (this.particles[i].lifespan <= 0) {
             this.particles.splice(i, 1);
@@ -114,8 +124,8 @@ Particle.prototype.update = function () {
 // Draw particle and connect it with a line
 // Draw a line to another
 Particle.prototype.display = function (other) {
-    stroke(0, this.lifespan);
-    fill(0, this.lifespan / 2);
+    stroke(fill_color, this.lifespan);
+    fill(fill_color, this.lifespan / 2);
     ellipse(this.position.x, this.position.y, 8, 8);
     // If we need to draw a line
     if (other) {
